@@ -52,5 +52,5 @@ https://localhost:9090
 ## Step 6: Check & Verify the deployment
   
   ```bash
-minikube service flask-service -n dev-dep
+minikube service flask-service -n <namespace>
 ```
