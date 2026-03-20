@@ -48,3 +48,9 @@ https://localhost:9090
 
 * Username: `admin`
 * Password: (from step 4)
+
+## Step 6: Check & Verify the deployment
+  
+  ```bash
+minikube service flask-service -n dev-dep
+```
