@@ -1,3 +1,8 @@
+
+## 📦 Project Structure
+
+```
+
 fastapi-helm-app/
 ├── app/                     # FastAPI application code
 │   ├── app.py
@@ -19,30 +24,100 @@ fastapi-helm-app/
 │
 └── README.md
 
-#Build & push image
+````
+
+---
+
+## ⚙️ Prerequisites
+
+- Kubernetes (Minikube or cluster)
+- Docker
+- Helm
+- kubectl
+
+---
+
+## 🐳 Build & Push Docker Image
+
+```bash
 docker build -t kundanvrs/fastapi-app:latest .
 docker push kundanvrs/fastapi-app:latest
+````
 
-#Create Helm chart
+---
+
+## 📦 Create Helm Chart
+
+```bash
 helm create fastapi-chart
+```
 
-#Deploy using Helm
-helm install fastapi ./fastapi-chart
+> Move or replace this chart inside `helm/fastapi-chart/`
 
-#Access app
+---
+
+## 🚀 Deploy using Helm
+
+```bash
+helm install fastapi ./helm/fastapi-chart
+```
+
+---
+
+## 🌐 Access Application
+
+### Option 1: Using Minikube IP
+
+```bash
 minikube ip
 kubectl get svc
+```
 
-👉 Open:
+Open in browser:
 
+```
 http://<minikube-ip>:30010
+```
 
-OR
+---
+
+### Option 2: Using Minikube Service (Recommended)
+
+```bash
 minikube service fastapi
-minikube service flask-service
+```
 
-#Upgrade
-helm upgrade fastapi ./fastapi-chart
+---
 
-#Rollback
+## 🔄 Upgrade Application
+
+```bash
+helm upgrade fastapi ./helm/fastapi-chart
+```
+
+---
+
+## ⏪ Rollback Deployment
+
+```bash
 helm rollback fastapi 1
+```
+
+---
+
+## ⚙️ Environment Configurations
+
+Use different values files:
+
+```bash
+# Dev
+helm install fastapi ./helm/fastapi-chart -f values-dev.yaml
+
+# QA
+helm install fastapi ./helm/fastapi-chart -f values-qa.yaml
+
+# Prod
+helm install fastapi ./helm/fastapi-chart -f values-prod.yaml
+```
+
+---
