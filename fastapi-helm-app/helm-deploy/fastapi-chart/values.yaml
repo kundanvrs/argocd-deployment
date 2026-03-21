@@ -8,4 +8,4 @@ service:
   type: NodePort
   port: 80
   targetPort: 8000
-  nodePort: 30010
+  nodePort: 30012
